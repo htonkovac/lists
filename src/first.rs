@@ -1,6 +1,3 @@
-
-#![allow(unused)]
-fn main() {
 use std::mem;
 
 pub struct List {
@@ -83,6 +80,5 @@ mod test {
         // Check exhaustion
         assert_eq!(list.pop(), Some(1));
         assert_eq!(list.pop(), None);
-    }
-}
+        }
 }
