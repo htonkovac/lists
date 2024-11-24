@@ -39,15 +39,15 @@ impl List {
     }
 }
 
-impl Drop for List {
-    fn drop(&mut self) {
-        let mut cur_link = mem::replace(&mut self.head, Link::Empty);
+// impl Drop for List {
+//     fn drop(&mut self) {
+//         let mut cur_link = mem::replace(&mut self.head, Link::Empty);
 
-        while let Link::More(mut boxed_node) = cur_link {
-            cur_link = mem::replace(&mut boxed_node.next, Link::Empty);
-        }
-    }
-}
+//         while let Link::More(mut boxed_node) = cur_link {
+//             cur_link = mem::replace(&mut boxed_node.next, Link::Empty);
+//         }
+//     }
+// }
 
 #[cfg(test)]
 mod test {
@@ -59,12 +59,20 @@ mod test {
 
         // Check empty list behaves right
         assert_eq!(list.pop(), None);
+// Uncomment this code and the Drop trait to cause a real stack overflow!
+// thread 'first::test::basics' has overflowed its stack
+// fatal runtime error: stack overflow
+// error: test failed, to rerun pass `--lib`
 
-        // Populate list
+        // Adding a loop to cause a stack overflow
+        // for i in 1..=50000 {
+        //     // Populate list
+        //     list.push(1)
+        // }
         list.push(1);
         list.push(2);
         list.push(3);
-
+        
         // Check normal removal
         assert_eq!(list.pop(), Some(3));
         assert_eq!(list.pop(), Some(2));
