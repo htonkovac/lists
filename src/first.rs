@@ -59,10 +59,10 @@ mod test {
 
         // Check empty list behaves right
         assert_eq!(list.pop(), None);
-// Uncomment this code and the Drop trait to cause a real stack overflow!
-// thread 'first::test::basics' has overflowed its stack
-// fatal runtime error: stack overflow
-// error: test failed, to rerun pass `--lib`
+        // Uncomment this code and the Drop trait to cause a real stack overflow!
+        // thread 'first::test::basics' has overflowed its stack
+        // fatal runtime error: stack overflow
+        // error: test failed, to rerun pass `--lib`
 
         // Adding a loop to cause a stack overflow
         // for i in 1..=50000 {
@@ -72,7 +72,7 @@ mod test {
         list.push(1);
         list.push(2);
         list.push(3);
-        
+
         // Check normal removal
         assert_eq!(list.pop(), Some(3));
         assert_eq!(list.pop(), Some(2));
@@ -88,5 +88,5 @@ mod test {
         // Check exhaustion
         assert_eq!(list.pop(), Some(1));
         assert_eq!(list.pop(), None);
-        }
+    }
 }
