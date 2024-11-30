@@ -1,6 +1,4 @@
-
 #![allow(unused)]
-fn main() {
 use std::rc::Rc;
 
 pub struct List<T> {
@@ -102,5 +100,4 @@ mod test {
         assert_eq!(iter.next(), Some(&2));
         assert_eq!(iter.next(), Some(&1));
     }
-}
 }
